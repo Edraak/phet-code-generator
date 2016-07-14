@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>PheT Simulation Code Generator</title>
+    <title>PhET Simulation Code Generator</title>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -24,6 +24,9 @@
     <!-- Clipboard.js for automatic text copy -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.12/clipboard.min.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.js"></script>
+
+    <script src="phet.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -40,38 +43,109 @@
           <ul class="nav nav-pills pull-right">
           </ul>
         </nav>
-        <h3 class="text-muted">PheT Simulation Code Generator</h3>
+        <h3 class="text-muted">PhET Simulation Code Generator</h3>
       </div>
 
       <div class="jumbotron">
         <h1>Salam!</h1>
 
-        <form onsubmit="generateCode(); return false;">
+        <p>
+          Step 1. Find a simulation from the <a href="https://phet.colorado.edu/en/simulations/category/html" target="_blank">PhET simulation website</a>.
+        </p>
+
+        <hr />
+
+        <form action="" id="da-form">
           <p>
-            <label for="simulation_url">
-              Enter the simulation code bellow:
-            </label>
+            <label style="font-weight: normal;" for="simulation-url">Step 2. Enter the simulation code bellow:</label>
+          </p>
+
+          <p>
             <input
-              id="simulation_url"
+              id="simulation-url"
               type="text"
               class="form-control"
               placeholder='<iframe src="https://phet.colorado.edu/sims/html/area-builder/latest/area-builder_en.html" ...'
             />
           </p>
 
-          <p><button class="btn btn-lg btn-success" type="button">Generate the edX Embed Code</button></p>
+          <hr />
+
+          <p>
+            <label style="font-weight: normal;" for="source-url">Step 3. Enter page which you got the code from (optional):</label>
+
+            <small>You can copy this from the browser's address bar.
+          </p>
+
+          <p>
+            <input
+              id="source-url"
+              type="text"
+              value="https://phet.colorado.edu/"
+              class="form-control"
+            />
+          </p>
+
+          <hr />
+
+          <p><button class="btn btn-lg btn-success" type="submit">Generate the edX Embed Code</button></p>
         </form>
       </div>
 
       <div class="row marketing">
         <div class="col-md-12">
           <form>
+            <p>
+              <label style="font-weight: normal;" for="result">Step 4. Copy the code bellow and paste it in Studio:</label>
+            </p>
+
             <textarea
               id="result"
               dir="auto"
               rows="10"
               placeholder="Your code will be here, once you generate it..."
               class="form-control disabled"></textarea>
+
+             <br />
+
+             <button id="copy" class="btn btn-success" data-clipboard-target="#result" type="button">
+               Copy to Clipboard
+             </button>
+
+            <hr />
+
+            <h2>Preview</h2>
+            <div id="preview"></div>
+
+              <script id="result-template" type="text/plain"><iframe
+  src="{{ iframeUrl }}"
+  width="800"
+  height="600"
+  style="display: block; margin: 0 auto; border: 0;"
+  allowfullscreen=""></iframe>
+
+<div style="text-align: center;">
+  <a rel="license" target="_blank"
+    style="text-decoration: none;"
+    href="https://creativecommons.org/licenses/by/4.0/deed.ar">
+      <img alt="رخصة المشاع الابداعي"
+           style="border-width: 0; vertical-align: middle;"
+           src="https://i.creativecommons.org/l/by/4.0/80x15.png" />
+  </a>
+   المحاكاة أعلاه مصنّفة بموجب
+  <a rel="license"
+     href="https://creativecommons.org/licenses/by/4.0/deed.ar" target="_blank">
+     رخصة المشاع الإبداعي - نَسب المُصنَّف 4.0 دولي
+  </a>.
+
+  <a href="{{ sourceUrl }}" target="_blank">[المصدر]</a>
+
+  <br />
+
+  <small>
+    بعض الحقوق محفوظة <a href="https://phet.colorado.edu/ar_SA/" target="_blank"> لمشروع فيت في جامعة كلورادو</a>.
+  </small>
+</div></script>
           </form>
         </div>
       </div>
