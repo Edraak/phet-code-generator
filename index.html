@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>PheT Simulation Code Generator</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="jumbotron-narrow.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    <!-- Clipboard.js for automatic text copy -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.12/clipboard.min.js"></script>
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="container">
+      <div class="header clearfix">
+        <nav>
+          <ul class="nav nav-pills pull-right">
+          </ul>
+        </nav>
+        <h3 class="text-muted">PheT Simulation Code Generator</h3>
+      </div>
+
+      <div class="jumbotron">
+        <h1>Salam!</h1>
+
+        <form onsubmit="generateCode(); return false;">
+          <p>
+            <label for="simulation_url">
+              Enter the simulation code bellow:
+            </label>
+            <input
+              id="simulation_url"
+              type="text"
+              class="form-control"
+              placeholder='<iframe src="https://phet.colorado.edu/sims/html/area-builder/latest/area-builder_en.html" ...'
+            />
+          </p>
+
+          <p><button class="btn btn-lg btn-success" type="button">Generate the edX Embed Code</button></p>
+        </form>
+      </div>
+
+      <div class="row marketing">
+        <div class="col-md-12">
+          <form>
+            <textarea
+              id="result"
+              dir="auto"
+              rows="10"
+              placeholder="Your code will be here, once you generate it..."
+              class="form-control disabled"></textarea>
+          </form>
+        </div>
+      </div>
+
+      <footer class="footer">
+        <p>&copy; 2016 Edraak.org</p>
+      </footer>
+
+    </div> <!-- /container -->
+  </body>
+</html>
